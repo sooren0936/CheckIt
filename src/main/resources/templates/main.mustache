@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <H1> Сервис по поиску стран </H1>
+    </head>
+<body>
+
+    <div>
+        Поиск по названию
+        <form method = "post" action = "filterName">
+            <input type = "text" name = "filterName">
+            <button type = submit>Найти</button>
+        </form>
+    </div>
+
+    <div>
+        Поиск по домену
+    <form method = "post" action = "filterTopLevelDomain">
+        <input type = "text" name = "filterTopLevelDomain">
+        <button type = submit>Найти</button>
+    </form>
+    </div>
+
+    {{#dataOfCountries}}
+        <div>
+            <b>{{id}}</b>
+            <span>{{name}}</span>
+            <span>{{topLevelDomain}}</span>
+            <span>{{population}}</span>
+            <span>{{latlng}}</span>
+            <span>{{currencies}}</span>
+            <span>{{languages}}</span>
+            <span>{{translations}}</span>
+            <span>{{flag}}</span>
+            <span>{{regionalBlocs}}</span>
+        </div>
+    {{/dataOfCountries}}
+
+</body>
+</html>
