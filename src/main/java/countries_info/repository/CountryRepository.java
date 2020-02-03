@@ -11,7 +11,7 @@ public interface CountryRepository extends CrudRepository<Country, Long> {
 
     List<Country> findByName(String name);
 
-    @Query(value = "SELECT * FROM country_top_level_domain a inner join country b ON a.country_id = b.id " +
-            "WHERE a.top_level_domain like %:topLevelDomain% ", nativeQuery = true)
+    @Query(value = "SELECT * FROM country_top_level_domain ctld INNER JOIN country c ON ctld.country_id = c.id " +
+            "WHERE ctld.top_level_domain LIKE %:topLevelDomain% ", nativeQuery = true)
     List<Country> findByTopLevelDomain(@Param("topLevelDomain") String topLevelDomain);
 }
