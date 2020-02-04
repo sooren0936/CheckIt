@@ -27,25 +27,18 @@ public class CountryController {
 
     @PostMapping("filterName")
     public String filterName(@NotNull @RequestParam String filterName, @NotNull Map<String, Object> model) {
-        Iterable<Country> dataOfCountries;
-        if (filterName != null && !filterName.isEmpty()) {
-            dataOfCountries = countryRepository.findByName(filterName);
-        } else {
-            dataOfCountries = countryRepository.findAll();
-        }
+        Iterable<Country> dataOfCountries = (filterName != null && !filterName.isEmpty()) ?
+                countryRepository.findByName(filterName):
+                countryRepository.findAll();
         model.put("dataOfCountries", dataOfCountries);
         return "main";
     }
 
     @PostMapping("filterTopLevelDomain")
     public String filterTopLevelDomain(@NotNull @RequestParam String filterTopLevelDomain, @NotNull Map<String, Object> model) {
-        Iterable<Country> dataOfCountries;
-
-        if (filterTopLevelDomain != null && !filterTopLevelDomain.isEmpty()) {
-            dataOfCountries = countryRepository.findByTopLevelDomain(filterTopLevelDomain);
-        } else {
-            dataOfCountries = countryRepository.findAll();
-        }
+        Iterable<Country> dataOfCountries = (filterTopLevelDomain != null && !filterTopLevelDomain.isEmpty()) ?
+                countryRepository.findByTopLevelDomain(filterTopLevelDomain):
+                countryRepository.findAll();
         model.put("dataOfCountries", dataOfCountries);
         return "main";
     }
